@@ -366,7 +366,35 @@ summary {
 </div>
 
 
-
+<p>##Load in Litters dataset</p>
+<pre class="r"><code>##read in a dataset 
+litters_data = read_csv(file= &quot;./data_import/FAS_litters.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Group = col_character(),
+##   `Litter Number` = col_character(),
+##   `GD0 weight` = col_double(),
+##   `GD18 weight` = col_double(),
+##   `GD of Birth` = col_double(),
+##   `Pups born alive` = col_double(),
+##   `Pups dead @ birth` = col_double(),
+##   `Pups survive` = col_double()
+## )</code></pre>
+<pre class="r"><code>litters_data= janitor::clean_names(litters_data)</code></pre>
+<div id="load-in-pups-data" class="section level2">
+<h2>Load in pups data</h2>
+<pre class="r"><code>pups_data = read_csv(file =&quot;./data_import/FAS_pups.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   `Litter Number` = col_character(),
+##   Sex = col_double(),
+##   `PD ears` = col_double(),
+##   `PD eyes` = col_double(),
+##   `PD pivot` = col_double(),
+##   `PD walk` = col_double()
+## )</code></pre>
+<pre class="r"><code>pups_data= janitor::clean_names(litters_data)</code></pre>
+</div>
 
 
 

@@ -7,3 +7,18 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
+
+##Load in Litters dataset
+```{r}
+##read in a dataset 
+litters_data = read_csv(file= "./data_import/FAS_litters.csv")
+litters_data= janitor::clean_names(litters_data)
+```
+
+## Load in pups data 
+
+```{r}
+pups_data = read_csv(file ="./data_import/FAS_pups.csv")
+pups_data= janitor::clean_names(litters_data)
+```
+
