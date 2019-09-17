@@ -394,6 +394,38 @@ litters_data = read_csv(file= &quot;./data_import/FAS_litters.csv&quot;)</code><
 ##   `PD walk` = col_double()
 ## )</code></pre>
 <pre class="r"><code>pups_data= janitor::clean_names(litters_data)</code></pre>
+<p>##Play with column parsig</p>
+<pre class="r"><code>litters_data = read_csv(file = &quot;./data_import/FAS_litters.csv&quot;,
+  col_types = cols(
+     Group = col_character(),
+    `Litter Number` = col_character(),
+    `GD0 weight` = col_double(),
+    `GD18 weight` = col_double(),
+    `GD of Birth` = col_integer(),
+    `Pups born alive` = col_integer(),
+    `Pups dead @ birth` = col_integer(),
+    `Pups survive` = col_integer()
+  ))
+tail(litters_data)</code></pre>
+<pre><code>## # A tibble: 6 x 8
+##   Group `Litter Number` `GD0 weight` `GD18 weight` `GD of Birth`
+##   &lt;chr&gt; &lt;chr&gt;                  &lt;dbl&gt;         &lt;dbl&gt;         &lt;int&gt;
+## 1 Low8  #79                     25.4          43.8            19
+## 2 Low8  #100                    20            39.2            20
+## 3 Low8  #4/84                   21.8          35.2            20
+## 4 Low8  #108                    25.6          47.5            20
+## 5 Low8  #99                     23.5          39              20
+## 6 Low8  #110                    25.5          42.7            20
+## # … with 3 more variables: `Pups born alive` &lt;int&gt;, `Pups dead @
+## #   birth` &lt;int&gt;, `Pups survive` &lt;int&gt;</code></pre>
+</div>
+<div id="read-in-an-excel-file" class="section level2">
+<h2>Read in an excel file…</h2>
+<pre class="r"><code>mlb11_data = read_excel(
+  path=&quot;./data_import/mlb11.xlsx&quot;,
+  range=&quot;A1:D7&quot;)</code></pre>
+<p>##Read in a SAS file…</p>
+<pre class="r"><code>pulse_data = read_sas(&quot;./data_import/public_pulse_data.sas7bdat&quot;)</code></pre>
 </div>
 
 
