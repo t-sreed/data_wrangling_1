@@ -1,0 +1,18 @@
+---
+title: "Data Manipulation"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+##Import dataset
+```{r}
+##read in a dataset 
+litters_data = read_csv(file= "./data_import/FAS_litters.csv")
+litters_data= janitor::clean_names(litters_data)
+pups_data = read_csv(file ="./data_import/FAS_pups.csv")
+pups_data= janitor::clean_names(pups_data)
+```
