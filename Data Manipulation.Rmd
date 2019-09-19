@@ -61,5 +61,35 @@ drop_na(litters_data)
 ##deletes only cases with missing gdo weight variables
 drop_na(litters_data, gd0_weight)
 ```
+ 
+ ##mutate
+ 
+```{r}
+mutate(
+  litters_data, 
+  wt_gain=gd18_weight-gd0_weight,
+  group=str_to_lower(group)
+  )
 
+```
+ 
+##Arrange
+
+```{r}
+arrange(litters_data, pups_born_alive)
+arrange(litters_data, desc(pups_born_alive))
+arrange(litters_data, pups_born_alive, gd0_weight)
+```
+
+##pipe
+
+```{r}
+litters_data = 
+  read_csv("./data_import/FAS_litters.csv") %>% 
+  janitor::clean_names() %>% 
+  # select(pups_survive) %>% 
+   mutate(wt_gain = gd18_weight - gd0_weight,
+   group = str_to_lower(group)) %>% 
+   drop_na(wt_gain)
+```
 
