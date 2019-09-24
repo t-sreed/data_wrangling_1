@@ -430,6 +430,23 @@ pivot_longer(
   names_to=&quot;sex&quot;,
   values_to=&quot;words&quot;
 )  </code></pre>
+<pre class="r"><code>pup_data = 
+  read_csv(&quot;./data_import/FAS_pups.csv&quot;, col_types = &quot;ciiiii&quot;) %&gt;%
+  janitor::clean_names() %&gt;%
+  mutate(sex = recode(sex, `1` = &quot;male&quot;, `2` = &quot;female&quot;)) 
+
+litter_data = 
+  read_csv(&quot;./data_import/FAS_litters.csv&quot;, col_types = &quot;ccddiiii&quot;) %&gt;%
+  janitor::clean_names() %&gt;%
+  select(-pups_survive) %&gt;%
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group))</code></pre>
+</div>
+<div id="try-to-join-these-datasets" class="section level2">
+<h2>Try to join these datasets</h2>
+<pre class="r"><code>fas_data=
+  left_join(pup_data, litter_data, by=&quot;litter_number&quot;)</code></pre>
 </div>
 
 
